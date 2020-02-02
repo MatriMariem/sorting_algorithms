@@ -81,5 +81,7 @@ void QS(int *array, int First, int Last, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
+	if (!array || size < 2)
+		return;
 	QS(array, 0, (int)(size - 1), size);
 }
