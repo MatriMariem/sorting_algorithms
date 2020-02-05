@@ -35,11 +35,9 @@ void split_merge(int *array, int first, int last)
 		return;
 	for (i = 0; i < n; i++)
 		arr[i] = array[first + i];
-	mid = (n / 2) + first;
-	printf("arr[0] %d arr[1] %d arr[2] %d\n\n", arr[0], arr[1], arr[2]);
-	printf("first %d, mid %d, last %d\n\n", first, mid, last);
-	split_merge(arr, first, mid - 1);
-	split_merge(arr, mid, last);
+	mid = (n / 2);
+	split_merge(arr, 0, mid - 1);
+	split_merge(arr, mid, n - 1);
 	merging(array, arr, first, mid, last);
 }
 
@@ -57,24 +55,23 @@ void merging(int *array, int *arr, int first, int mid, int last)
 
 	printf("Merging...\n");
 	printf("[left]: ");
-	print_array((const int *)arr, mid - first);
+	print_array((const int *)arr, mid);
 	printf("[right]: ");
-	print_array((const int *)&arr[mid - first], last - mid + 1);
+	print_array((const int *)&arr[mid], last - first + 1 - mid);
 
-	nl = mid - first;
-	nr = last - mid + 1;
+	nl = mid;
+	nr = last - first + 1 - mid;
 	while (i < nl && j < nr)
 	{
-		if (arr[i] < arr[mid - first + j])
+		if (arr[i] < arr[mid + j])
 		{
 			array[first + k] = arr[i];
 			i++;
 			k++;
-
 		}
 		else
 		{
-			array[first + k] = arr[mid - first + j];
+			array[first + k] = arr[mid + j];
 			j++;
 			k++;
 		}
@@ -87,7 +84,7 @@ void merging(int *array, int *arr, int first, int mid, int last)
 	}
 	while (j < nr)
 	{
-		array[first + k] = arr[mid - first + j];
+		array[first + k] = arr[mid + j];
 		j++;
 		k++;
 	}
