@@ -29,6 +29,9 @@ unsigned int max;
 size_t i;
 int *count, *output, val;
 
+if (!array || size < 2)
+return;
+
 max = maximum(array, size);
 count = malloc(sizeof(size_t) * (max + 1));
 output = malloc(sizeof(array));
