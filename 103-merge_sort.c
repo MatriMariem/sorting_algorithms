@@ -58,7 +58,6 @@ void merging(int *array, int *arr, int first, int mid, int last)
 	print_array((const int *)arr, mid);
 	printf("[right]: ");
 	print_array((const int *)&arr[mid], last - first + 1 - mid);
-
 	nl = mid;
 	nr = last - first + 1 - mid;
 	while (i < nl && j < nr)
