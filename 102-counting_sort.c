@@ -34,7 +34,7 @@ return;
 
 max = maximum(array, size);
 count = malloc(sizeof(size_t) * (max + 1));
-output = malloc(sizeof(array));
+output = malloc(sizeof(int) * size);
 for (i = 0; i <= max; i++)
 count[i] = 0;
 for (i = 0; i < size; i++)
