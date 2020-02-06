@@ -1,6 +1,7 @@
 #include "sort.h"
 
 /**
+<<<<<<< HEAD
  * merge_sort - sorts an array of integers in ascending order
  * using the Merge sort algorithm and
  * implementing the top-down merge sort algorithm
@@ -46,6 +47,8 @@ void split_merge(int *array, int *arr, int first, int last)
 }
 
 /**
+=======
+>>>>>>> 08c1ec00cdad28fca13540865323882dbd896bce
  * merging - merges 2 sorted subarrays in an unsorted array
  * @array: the unsorted array
  * @arr: the temporary array that contains subarrays
@@ -93,4 +96,44 @@ void merging(int *array, int *arr, int first, int mid, int last)
 	}
 	printf("[Done]: ");
 	print_array((const int *)&array[first], last - first + 1);
+}
+/**
+ * split_merge - splits the array into subarrays and
+ * merge sort them using the top-down merge sort algorithm
+ * @array: the array of integers
+ * @first: index of first element
+ * @last: index of last element
+ */
+void split_merge(int *array, int first, int last)
+{
+	int *arr;
+	int i, n, mid;
+
+	n = last - first + 1;
+	if (n < 2)
+		return;
+	arr = malloc(sizeof(int) * n);
+	if (!arr)
+		return;
+	for (i = 0; i < n; i++)
+		arr[i] = array[first + i];
+	mid = (n / 2);
+	split_merge(arr, 0, mid - 1);
+	split_merge(arr, mid, n - 1);
+	merging(array, arr, first, mid, last);
+}
+
+/**
+ * merge_sort - sorts an array of integers in ascending order
+ * using the Merge sort algorithm and
+ * implementing the top-down merge sort algorithm
+ * @array: the array of integers
+ * @size: size of the array
+ */
+void merge_sort(int *array, size_t size)
+{
+
+	if (!array || size < 2)
+		return;
+	split_merge(array, 0, (int)(size - 1));
 }
