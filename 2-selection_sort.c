@@ -14,6 +14,7 @@ void swap_integers(int *a, int *b)
 	*b = c;
 }
 
+
 /**
  * selection_sort - sorts an array of integers in ascending order
  * using the Selection sort algorithm
@@ -27,6 +28,7 @@ void selection_sort(int *array, size_t size)
 
 	if (!array || size < 2)
 		return;
+
 	for (i = 0; i < size - 1; i++)
 	{
 		min = array[i];
